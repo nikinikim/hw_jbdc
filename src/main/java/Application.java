@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) throws SQLException {
@@ -6,25 +8,24 @@ public class Application {
         final String password = "";
         final String url = "jdbc:postgresql://localhost:5432/skypro";
 
-        try (final Connection connection = DriverManager.getConnection(url, user, password);
-            PreparedStatement statement = connection.prepareStatement("SELECT employee.first_name, employee.last_name, employee.gender, city.city_name " +
-                    "FROM employee INNER JOIN city ON employee.city_id=city.city_id " +
-                    "WHERE employee.id = ?;")){
+        try (final Connection connection = DriverManager.getConnection(url, user, password)) {
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl(connection);
 
-            statement.setInt(1, 2);
+            City ufa = new City(5, "Ufa");
+            Employee employee1 = new Employee("Ekaterina", "Bolshakova", "female", 26, ufa);
+            employeeDAO.create(employee1);
 
-            final ResultSet resultSet = statement.executeQuery();
+            List<Employee> employeeList = new ArrayList<>(employeeDAO.getAll());
 
-            while (resultSet.next()) {
-                String first_name = "First_name: " + resultSet.getString("first_name");
-                String last_name = "Last_name: " + resultSet.getString("last_name");
-                String gender = "Gender: " + resultSet.getString("gender");
-                String city = "City: " + resultSet.getString("city_name");
+            for (Employee employee : employeeList) {
+                System.out.println(employee);
+            }
 
+            employeeDAO.deleteById(11);
+            employeeDAO.updateById(12, "Valentina", "Boyarinova", "female", 21, ufa);
 
-                System.out.println(first_name + " " + last_name + " " + gender + " " + city);
-
-
+            for (Employee employee : employeeList) {
+                System.out.println(employee);
             }
 
 

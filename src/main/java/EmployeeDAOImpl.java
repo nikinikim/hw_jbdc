@@ -15,12 +15,12 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     @Override
     public void create(Employee employee) {
         try(PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO employee (first_name, last_name, gender, age, city_id) VALUES (?, ?, ?, ?, ?)")){
-            statement.setString(1, employee.getFirst_name());
-            statement.setString(2, employee.getLast_name());
+                "INSERT INTO employee (firstName, lastName, gender, age, cityId) VALUES (?, ?, ?, ?, ?)")){
+            statement.setString(1, employee.getFirstName());
+            statement.setString(2, employee.getLastName());
             statement.setString(3, employee.getGender());
             statement.setInt(4, employee.getAge());
-            statement.setInt(5, employee.getCity_name().getCity_id());
+            statement.setInt(5, employee.getCityName().getCityId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,11 +37,11 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
             while (resultSet.next()){
                 employee.setId(Integer.parseInt(resultSet.getString("id")));
-                employee.setFirst_name(resultSet.getString("first_name"));
-                employee.setLast_name(resultSet.getString("last_name"));
+                employee.setFirstName(resultSet.getString("first_name"));
+                employee.setLastName(resultSet.getString("last_name"));
                 employee.setGender(resultSet.getString("gender"));
                 employee.setAge(resultSet.getInt("age"));
-                employee.setCity_name(new City(resultSet.getInt("city_id"),
+                employee.setCityName(new City(resultSet.getInt("city_id"),
                         resultSet.getString("city_name")));
             }
         } catch (SQLException e) {
@@ -75,25 +75,15 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     }
 
     @Override
-    public void updateById(int id, String first_name, String last_name, String gender, int age, City city_name) {
+    public void updateById(int id, String firstName, String lastName, String gender, int age, City cityName) {
         try (PreparedStatement statement = connection.prepareStatement(
                 "UPDATE employee SET first_name=?, last_name=?, gender=?, age=?, city_id=? WHERE id=?"
         )){
-            Employee employee = getById(id);
-            if (employee == null) {
-                throw new IllegalArgumentException("Employee not found with id: " + id);
-            }
-            employee.setFirst_name(first_name);
-            employee.setLast_name(last_name);
-            employee.setGender(gender);
-            employee.setAge(age);
-            employee.setCity_name(city_name);
-
-            statement.setString(1, employee.getFirst_name());
-            statement.setString(2, employee.getLast_name());
-            statement.setString(3, employee.getGender());
-            statement.setInt(4, employee.getAge());
-            statement.setInt(5, employee.getCity_name().getCity_id());
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3,gender);
+            statement.setInt(4, age);
+            statement.setInt(5, cityName.getCityId());
             statement.setInt(6, id);
 
             statement.executeUpdate();

@@ -1,7 +1,6 @@
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -27,7 +26,6 @@ public class Application {
                 System.out.println(employee);
             }
 
-            // Удаление сотрудника
             employeeDAO.delete(retrievedEmployee);
 
             entityManager.close();

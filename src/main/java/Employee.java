@@ -1,31 +1,43 @@
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Employee")
 public class Employee {
+    @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "first_name", length = 60, nullable = false)
     private String firstName;
+    @Column(name = "last_name", length = 60, nullable = false)
     private String lastName;
+    @Column(name = "gender", length = 6, nullable = false)
     private String gender;
+    @Column(name = "age", nullable = false)
     private int age;
-    private City cityName;
+    @Column(name = "city_id")
+    private int cityId;
 
     public Employee() {
     }
-
-    public Employee(String firstName, String lastName, String gender, int age, City cityName) {
+    public Employee(String firstName, String lastName, String gender, int age, int cityId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.cityName = cityName;
+        this.cityId = cityId;
     }
 
-    public Employee(int id, String firstName, String lastName, String gender, int age, City cityName) {
+    public Employee(int id, String firstName, String lastName, String gender, int age, int cityId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.cityName = cityName;
+        this.cityId = cityId;
     }
 
     public int getId() {
@@ -68,12 +80,12 @@ public class Employee {
         this.age = age;
     }
 
-    public City getCityName() {
-        return cityName;
+    public int getCityId() {
+        return cityId;
     }
 
-    public void setCityName(City cityName) {
-        this.cityName = cityName;
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
     @Override
@@ -81,23 +93,23 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id && age == employee.age && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(gender, employee.gender) && Objects.equals(cityName, employee.cityName);
+        return id == employee.id && age == employee.age && cityId == employee.cityId && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(gender, employee.gender);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, gender, age, cityName);
+        return Objects.hash(id, firstName, lastName, gender, age, cityId);
     }
 
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", first_name='" + firstName + '\'' +
-                ", last_name='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
-                ", city_name=" + cityName +
+                ", cityId=" + cityId +
                 '}';
     }
 }

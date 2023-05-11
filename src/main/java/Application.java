@@ -1,35 +1,39 @@
-import java.sql.*;
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 
+
 public class Application {
-    public static void main(String[] args) throws SQLException {
-        final String user = "postgres";
-        final String password = "";
-        final String url = "jdbc:postgresql://localhost:5432/skypro";
+    public static void main(String[] args) {
 
-        try (final Connection connection = DriverManager.getConnection(url, user, password)) {
-            EmployeeDAO employeeDAO = new EmployeeDAOImpl(connection);
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
-            City ufa = new City(5, "Ufa");
-            Employee employee1 = new Employee("Ekaterina", "Bolshakova", "female", 26, ufa);
+            Employee employee1 = new Employee("Ekaterina", "Bolshakova", "female", 26, 2);
             employeeDAO.create(employee1);
+            Employee retrievedEmployee = employeeDAO.getById(employee1.getId());
+            System.out.println("Retrieved Employee: " + retrievedEmployee);
 
-            List<Employee> employeeList = new ArrayList<>(employeeDAO.getAll());
+            retrievedEmployee.setAge(27);
+            employeeDAO.update(retrievedEmployee);
 
-            for (Employee employee : employeeList) {
+
+            List<Employee> allEmployees = employeeDAO.getAll();
+            System.out.println("All Employees:");
+            for (Employee employee : allEmployees) {
                 System.out.println(employee);
             }
 
-            employeeDAO.deleteById(11);
-            employeeDAO.updateById(12, "Valentina", "Boyarinova", "female", 21, ufa);
+            employeeDAO.delete(retrievedEmployee);
 
-            for (Employee employee : employeeList) {
-                System.out.println(employee);
-            }
-
-
-        }
+            entityManager.close();
+            entityManagerFactory.close();
     }
-
 }
+
+
+
+
+

@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae214a8f-b9e2-457d-9588-5b09f01992f0" name="Changes" comment="Task 2 completed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/HibernateUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+    <list default="true" id="ae214a8f-b9e2-457d-9588-5b09f01992f0" name="Changes" comment="Hibernate task 1 completed">
+      <change afterPath="$PROJECT_DIR$/src/main/java/CityDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CityDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/City.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EmployeeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EmployeeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EmployeeDAOImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="hibernate" />
+        <entry key="$PROJECT_DIR$" value="hiber1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,7 +47,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "hiber1",
+    "git-widget-placeholder": "hiber2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,7 +86,7 @@
       <workItem from="1680848327326" duration="1885000" />
       <workItem from="1681100297406" duration="150000" />
       <workItem from="1683004258785" duration="106000" />
-      <workItem from="1683004501960" duration="23546000" />
+      <workItem from="1683004501960" duration="27232000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1680674639545</created>
@@ -119,7 +116,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680840273937</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Hibernate task 1 completed">
+      <created>1683805985587</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683805985587</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Hibernate task 1 completed">
+      <created>1683806039895</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683806039895</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +140,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Task 1 completed" />
     <MESSAGE value="Task 2 completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task 2 completed" />
+    <MESSAGE value="Hibernate task 1 completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hibernate task 1 completed" />
   </component>
 </project>
